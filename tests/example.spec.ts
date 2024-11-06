@@ -1,18 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
-
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test('test', async ({ page }) => {
+  await page.goto('https://www.metsagroup.com/');
+  await page.getByRole('button', { name: 'Accept All Cookies' }).click();
+  await page.getByRole('button', { name: 'Business areas' }).click();
+  await page.getByRole('link', { name: 'Metsä Forest Metsä Forest' }).click();
+  await expect(page.locator('section').filter({ hasText: 'Become an owner-member Learn' }).locator('img')).toBeVisible();
 });
